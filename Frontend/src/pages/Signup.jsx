@@ -11,6 +11,8 @@ const Signup = () => {
   });
 
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,13 +30,11 @@ const Signup = () => {
 
     const { name, email, password, confirmPassword } = formData;
 
-    // 1️⃣ All fields required
     if (!name || !email || !password || !confirmPassword) {
       setError("All fields are required");
       return;
     }
 
-    // 2️⃣ Strong password check
     if (!isStrongPassword(password)) {
       setError(
         "Password must be at least 8 characters and include uppercase, lowercase, number, and special character"
@@ -42,14 +42,12 @@ const Signup = () => {
       return;
     }
 
-    // 3️⃣ Password match check
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
-    // ✅ Passed all validations
-    alert("Signup successful 🎉 (Backend will be connected later)");
+    alert("Signup successful 🎉");
   };
 
   return (
@@ -74,21 +72,41 @@ const Signup = () => {
             onChange={handleChange}
           />
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+          {/* Password Field */}
+          <div className="password-field">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <span
+              className="toggle-eye"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🔐" : "👁️‍🗨️"}
+            </span>
+          </div>
 
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-          />
+          {/* Confirm Password Field */}
+          <div className="password-field">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+            />
+            <span
+              className="toggle-eye"
+              onClick={() =>
+                setShowConfirmPassword(!showConfirmPassword)
+              }
+            >
+              {showConfirmPassword ? "🔐" : "👁️‍🗨️"}
+            </span>
+          </div>
 
           {error && <p style={{ color: "red", fontSize: "14px" }}>{error}</p>}
 
