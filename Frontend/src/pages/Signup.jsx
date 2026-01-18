@@ -15,7 +15,10 @@ const Signup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
     setError("");
   };
 
@@ -25,7 +28,7 @@ const Signup = () => {
     return strongPasswordRegex.test(password);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { name, email, password, confirmPassword } = formData;
@@ -47,7 +50,30 @@ const Signup = () => {
       return;
     }
 
-    alert("Signup successful 🎉");
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message || "Signup failed");
+        return;
+      }
+
+      alert("Signup successful 🎉 Now login");
+    } catch (error) {
+      setError("Server error. Try again later.");
+    }
   };
 
   return (
@@ -72,7 +98,6 @@ const Signup = () => {
             onChange={handleChange}
           />
 
-          {/* Password Field */}
           <div className="password-field">
             <input
               type={showPassword ? "text" : "password"}
@@ -89,7 +114,6 @@ const Signup = () => {
             </span>
           </div>
 
-          {/* Confirm Password Field */}
           <div className="password-field">
             <input
               type={showConfirmPassword ? "text" : "password"}
@@ -100,9 +124,7 @@ const Signup = () => {
             />
             <span
               className="toggle-eye"
-              onClick={() =>
-                setShowConfirmPassword(!showConfirmPassword)
-              }
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {showConfirmPassword ? "🔐" : "👁️‍🗨️"}
             </span>
