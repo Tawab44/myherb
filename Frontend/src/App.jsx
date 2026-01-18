@@ -3,6 +3,7 @@
 //import viteLogo from '/vite.svg'
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -16,15 +17,26 @@ function App() {
       <Navbar />
 
       <Routes>
+        {/* Public routes */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/Vgarden" element={<Vgarden />}/>
+
+        {/* Protected route */}
+        <Route
+          path="/Vgarden"
+          element={
+            <ProtectedRoute>
+              <Vgarden />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );
 }
 
 export default App;
+
 
