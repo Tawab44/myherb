@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import homeBg from "../assets/mist.gif";
-import loginImg from "../assets/vgardenbg.webp";
+import loginImg from "../assets/vgardenf.png";
 import featureImg from "../assets/herbbgtr2.png";
 import youtubeBg from "../assets/takpl.png";
 
