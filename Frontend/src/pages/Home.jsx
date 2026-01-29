@@ -61,6 +61,9 @@ const Home = () => {
         background: `url(${homeBg}) no-repeat center center`,
         backgroundSize: "cover",
         padding: "40px 0",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
       }}
     >
       {/* Content Card */}
@@ -69,15 +72,23 @@ const Home = () => {
           padding: "20px",
           maxWidth: "800px",
           margin: "0 auto",
-          background: "rgba(255,255,255,0.6)",
+          background: "rgba(46, 42, 42, 0.4)",
           borderRadius: "12px",
+          textAlign:"center",
         }}
       >
-        <h1 style={{fontSize:"3rem"}}>
-          Upload an image of a plant and let AI identify it for you.
+        <h1 style={{fontSize:"3rem",
+                    color:"#ffffff",
+                    fontFamily: "'Poppins', sans-serif",
+                    fontWeight: "700",}}>
+          Upload an image of a plant and let AI {""}<span style={{ color: "#49d54d" }}>Identify</span> it for you.
         </h1>
 
-        <h4 style={{ marginTop: "10px", lineHeight: "1.6" }}>
+        <h4 style={{ marginTop: "10px", 
+                     lineHeight: "1.6",
+                     color:"#ffffff",
+                     fontFamily: "'Poppins', sans-serif",
+                    fontWeight: "400",}}>
           Herb AI is a free and open-source platform designed to identify plants and
           herbs using machine learning. Upload an image below to get instant
           predictions.
