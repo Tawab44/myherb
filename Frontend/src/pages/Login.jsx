@@ -5,6 +5,7 @@ import "../styles/auth.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -44,9 +45,10 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container login-bg">
+
       <div className="auth-card">
-        <h2>Login</h2>
+        <h2 style={{fontFamily: "'Poppins', sans-serif",}}>Login</h2>
 
         <form onSubmit={handleSubmit}>
           <input
@@ -56,12 +58,21 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="password-field">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <span
+              className="toggle-eye"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🔐" : "👁️‍🗨️"}
+            </span>
+          </div>
 
           {error && <p style={{ color: "red" }}>{error}</p>}
 
