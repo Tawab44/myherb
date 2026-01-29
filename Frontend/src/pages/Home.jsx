@@ -1,6 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import homeBg from "../assets/mist.gif";
+import loginImg from "../assets/vgardenbg.webp";
+import featureImg from "../assets/herbbgtr2.png";
+import youtubeBg from "../assets/takpl.png";
 
 const Home = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -55,6 +59,7 @@ const Home = () => {
   };
 
   return (
+    <>
     <div
       style={{
         minHeight: "100vh",
@@ -191,7 +196,97 @@ const Home = () => {
         
       </div>
     </div>
-    
+ {/* LOGIN INFO SECTION */}
+      <div
+        style={{
+          padding: "80px 10%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "40px",
+          flexWrap: "wrap",
+          backgroundColor: "#ffffff",
+        }}
+      >
+        <div style={{ flex: 1 }}>
+          <h2 style={{ color: "#14532d" }}>
+            Login to Unlock the Virtual Garden 🌿
+          </h2>
+          <p style={{ marginTop: "15px", lineHeight: "1.7" }}>
+            Login to get access to the Virtual Garden and explore complete
+            information about medicinal herbs including their benefits,
+            symptoms treated, and traditional uses.
+
+            Herb AI features beautifully designed data cards for each herb, displaying its name, image, health benefits, and common uses in one place. These cards make it easy to browse, compare, and learn about different herbs quickly, giving you a clear and organized way to explore herbal information.
+          </p>
+        </div>
+
+        <img
+          src={loginImg}
+          alt="Login"
+          style={{ width: "350px", borderRadius: "12px" }}
+        />
+      </div>
+
+      {/* FEATURES SECTION */}
+      <div
+        style={{
+          padding: "80px 10%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "40px",
+          flexWrap: "wrap",
+          backgroundColor: "#f0fdf4",
+        }}
+      >
+        <img
+          src={featureImg}
+          alt="Features"
+          style={{ width: "350px", borderRadius: "12px" }}
+        />
+
+        <div style={{ flex: 1 }}>
+          <h2 style={{ color: "#166534" }}>Main Features 🚀</h2>
+          <p style={{ marginTop: "15px", lineHeight: "1.7" }}>
+            Herb AI can accurately identify over 25 medicinal herbs from
+            an image. It provides detailed information including medicinal and
+            culinary benefits, practical usage tips, and traditional knowledge.
+          </p>
+        </div>
+      </div>
+
+      {/* GUIDANCE + YOUTUBE */}
+      <Link to="/about" style={{ textDecoration: "none" }}>
+        <div
+          style={{
+            height: "70vh",
+            background: `url(${youtubeBg}) center/cover no-repeat`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            color: "white",
+          }}
+        >
+          <div
+            style={{
+              background: "rgba(0,0,0,0.65)",
+              padding: "40px",
+              borderRadius: "14px",
+              maxWidth: "800px",
+            }}
+          >
+            <h2>We’re Here to Guide You 🌱</h2>
+            <p style={{ marginTop: "15px", lineHeight: "1.7" }}>
+              Have questions about herbs or how our AI works? Herb AI helps you
+              explore plant benefits and use the prediction tool with ease.
+            </p>
+            <p style={{ marginTop: "20px" }}> Click here to know more</p>
+          </div>
+        </div>
+      </Link>
+    </>
   );
 };
 

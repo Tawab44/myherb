@@ -4,6 +4,8 @@ import axios from "axios";
 const Vgarden = () => {
   const [plants, setPlants] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+
 
   useEffect(() => {
     const fetchPlants = async () => {
@@ -21,13 +23,50 @@ const Vgarden = () => {
     fetchPlants();
   }, []);
 
+ const filteredPlants = plants.filter((plant) => {
+  const search = searchTerm.toLowerCase();
+
+  return (
+    plant.commonName.toLowerCase().includes(search) ||
+    plant.scientificName.toLowerCase().includes(search) ||
+    plant.usedFor.some((use) =>
+      use.toLowerCase().includes(search)
+    ) ||
+    plant.symptomsTreated.some((symptom) =>
+      symptom.toLowerCase().includes(search)
+    )
+  );
+});
+ 
   if (loading) {
     return <h2 style={{ padding: "20px" }}>Loading garden...</h2>;
   }
 
   return (
-    <div style={{ padding: "20px" }}>
+    
+    <div style={{ padding: "20px",}}>
       <h1>🌿 Virtual Garden</h1>
+      <input
+   type="text"
+   placeholder="🔍 Search by name, use, or symptom..."
+   value={searchTerm}
+   onChange={(e) => setSearchTerm(e.target.value)}
+  style={{
+    marginTop: "15px",
+    padding: "12px 16px",
+    width: "100%",
+    maxWidth: "400px",
+    borderRadius: "10px",
+    border: "1px solid #ccc",
+    fontSize: "16px",
+    
+  }}
+/>
+{filteredPlants.length === 0 && (
+  <p style={{ marginTop: "20px", color: "#666" }}>
+    No plants found 🌱
+  </p>
+)}
 
       <div
         style={{
@@ -37,7 +76,8 @@ const Vgarden = () => {
           marginTop: "20px"
         }}
       >
-        {plants.map((plant) => (
+        {filteredPlants.map((plant) => (
+
           <div
             key={plant._id}
             style={{
@@ -45,7 +85,9 @@ const Vgarden = () => {
               borderRadius: "12px",
               padding: "15px",
               backgroundColor: "#f0fdf4",
-              boxShadow: "0 5px 12px rgba(0,0,0,0.1)"
+              boxShadow: "0 5px 12px rgba(0,0,0,0.1)",
+              maxWidth: "320px",     
+              margin: "0 auto"
             }}
           >
             <img
@@ -59,9 +101,9 @@ const Vgarden = () => {
               }}
             />
 
-            <h3 style={{ marginTop: "10px", color: "#166534" }}>
+            <h2 style={{ marginTop: "10px", color: "#166534" }}>
               {plant.commonName}
-            </h3>
+            </h2>
 
             <p><strong>Scientific Name:</strong> {plant.scientificName}</p>
             <p><strong>Height:</strong> {plant.height}</p>
