@@ -25,14 +25,19 @@ const Navbar = () => {
 
         {token ? (
           <>
-            <li><Link to="/Vgarden">VGarden</Link></li>
+            <li>
+  <Link to="/Vgarden" className="nav-btn vgarden-btn">
+    VGarden
+  </Link>
+          </li>
             <li>
               <button
-                onClick={handleLogout}
-                className="logout-btn"
-              >
-                Logout
-              </button>
+  onClick={handleLogout}
+  className="nav-btn logout-btn"
+         >
+            Logout
+             </button>
+
             </li>
           </>
         ) : (

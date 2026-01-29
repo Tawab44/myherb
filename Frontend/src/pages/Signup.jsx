@@ -77,9 +77,10 @@ const Signup = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container signup-bg">
+
       <div className="auth-card">
-        <h2>Create Account</h2>
+        <h2 style={{fontFamily: "'Poppins', sans-serif",}}>Create Account</h2>
 
         <form onSubmit={handleSubmit}>
           <input

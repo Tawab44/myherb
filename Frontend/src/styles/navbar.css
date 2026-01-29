@@ -33,6 +33,7 @@
   list-style: none;
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -70,6 +71,11 @@
   border-radius: 900px;        
   font-weight: 500;
   transition: all 0.3s ease;
+
+  display: inline-flex;        /* 👈 normalize */
+  align-items: center;         /* 👈 vertical centering */
+  justify-content: center;
+  line-height: 1;
 }
 
 /* Login button (glass style) */
@@ -93,4 +99,35 @@
 .signup-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
+}
+
+/* VGarden button (light green) */
+.vgarden-btn {
+  background: rgba(44, 170, 88, 0.85); /* light green */
+  color: #14532d;
+  border: 1px solid rgba(34, 197, 94, 0.6);
+}
+
+.vgarden-btn:hover {
+  background: rgba(34, 197, 94, 0.95);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.5);
+}
+/* Logout button (red) */
+.logout-btn {
+  background: rgba(248, 113, 113, 0.9);
+  color: white;
+  border: 1px solid rgba(220, 38, 38, 0.7);
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: rgb(220, 38, 38);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(198, 71, 71, 0.6);
+}
+
+.logout-btn:hover {
+  color: #000;
 }

@@ -106,9 +106,10 @@ const Home = () => {
               cursor: "pointer",
               display: "inline-block",
               fontWeight: "bold",
+              fontFamily: "'Poppins', sans-serif",
             }}
           >
-            📤 Upload Plant Image
+             Upload Plant Image 📤
           </label>
 
           <input
@@ -132,6 +133,7 @@ const Home = () => {
               borderRadius: "8px",
               cursor: "pointer",
               fontSize: "16px",
+              fontFamily: "'Poppins', sans-serif",
             }}
             disabled={loading}
           >
@@ -186,8 +188,10 @@ const Home = () => {
             Error: {prediction.error}
           </div>
         )}
+        
       </div>
     </div>
+    
   );
 };
 
