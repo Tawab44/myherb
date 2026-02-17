@@ -10,6 +10,8 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Vgarden from "./pages/Vgarden";
+import Query from "./pages/Query";
+
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/query" element={<Query />} />
+
 
         {/* Protected route */}
         <Route

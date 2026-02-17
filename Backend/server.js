@@ -4,6 +4,8 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import plantRoutes from "./routes/plantRoutes.js";
+import queryRoutes from "./routes/queryRoutes.js";
+
 
 dotenv.config();
 connectDB();
@@ -15,6 +17,10 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/plants", plantRoutes);
+app.use("/api/queries", queryRoutes);
+
+app.use("/uploads", express.static("uploads"));
+
 
 
 app.get("/", (req, res) => {
