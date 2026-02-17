@@ -22,21 +22,30 @@ const Vgarden = () => {
 
     fetchPlants();
   }, []);
-
- const filteredPlants = plants.filter((plant) => {
+    
+//Search herbs Logic
+const filteredPlants = plants.filter((plant) => {
   const search = searchTerm.toLowerCase();
 
   return (
     plant.commonName.toLowerCase().includes(search) ||
     plant.scientificName.toLowerCase().includes(search) ||
+
+
+    plant.medicinalProperties.some((property) =>
+      property.toLowerCase().includes(search)
+    ) ||
+
     plant.usedFor.some((use) =>
       use.toLowerCase().includes(search)
     ) ||
+
     plant.symptomsTreated.some((symptom) =>
       symptom.toLowerCase().includes(search)
     )
   );
 });
+
  
   if (loading) {
     return <h2 style={{ padding: "20px" }}>Loading garden...</h2>;
