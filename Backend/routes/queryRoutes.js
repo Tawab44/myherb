@@ -4,39 +4,40 @@ import Query from "../models/Query.js";
 
 const router = express.Router();
 
-/* ---------- Multer Config ---------- */
+/* Multer Storage*/
+
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
+  destination: "uploads/",
+  filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
   },
 });
 
 const upload = multer({ storage });
 
-/* ---------- POST Query ---------- */
+/*POST Query*/
+
 router.post("/", upload.single("image"), async (req, res) => {
   try {
-    const { email, nameOrProperties, description } = req.body;
-
-    if (!email || !description) {
-      return res.status(400).json({ message: "Email and description required" });
-    }
-
-    const newQuery = new Query({
-      email,
-      nameOrProperties,
-      description,
-      image: req.file ? req.file.path : null,
+    const query = new Query({
+      commonName: req.body.commonName,
+      scientificName: req.body.scientificName,
+      partUsed: req.body.partUsed,
+      properties: req.body.properties,
+      source: req.body.source,
+      missingStatus: req.body.missingStatus,
+      notes: req.body.notes,
+      contributorName: req.body.contributorName,
+      email: req.body.email,
+      permission: req.body.permission === "true",
+      imageUrl: req.file ? req.file.path : null,
     });
 
-    await newQuery.save();
+    await query.save();
 
-    res.status(201).json({ message: "Query submitted successfully" });
+    res.status(201).json({ message: "Submission successful 🌿" });
   } catch (error) {
-    res.status(500).json({ message: "Failed to submit query" });
+    res.status(500).json({ message: "Submission failed" });
   }
 });
 

@@ -2,24 +2,28 @@ import mongoose from "mongoose";
 
 const querySchema = new mongoose.Schema(
   {
-    email: {
-      type: String,
-      required: true,
-    },
-    nameOrProperties: {
-      type: String,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String, // will store image path
-    },
+    commonName: { type: String, required: true },
+    scientificName: String,
+
+    partUsed: [String], // checkboxes
+
+    properties: String,
+
+    source: { type: String, required: true },
+
+    missingStatus: { type: String, required: true },
+
+    notes: String,
+
+    contributorName: String,
+
+    email: { type: String, required: true },
+
+    permission: { type: Boolean, required: true },
+
+    imageUrl: String,
   },
   { timestamps: true }
 );
 
-const Query = mongoose.model("Query", querySchema);
-
-export default Query;
+export default mongoose.model("Query", querySchema);
