@@ -26,5 +26,8 @@ dist-ssr
 #ML model
 # Ignore ML model files
 *.h5
+*.pt
+#for .h5 install tensorflow
+*.joblib
 #DataBase
 *.env

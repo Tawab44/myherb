@@ -1,63 +1,138 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.resnet50 import preprocess_input
-import numpy as np
+import torch
+from torchvision import transforms
+from PIL import Image
 import shutil
 import os
 
-# Initialize FastAPI
+# -------------------------
+# INIT APP
+# -------------------------
+
 app = FastAPI()
 
-# Allow frontend requests
 origins = ["http://localhost:5173"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Load trained model
-model = load_model("ResNet50_m1.h5")
+# -------------------------
+# LOAD TORCHSCRIPT MODEL (.pt)
+# -------------------------
 
-# Class labels  
-CLASS_NAMES = [str(i) for i in range(30)]
+model = torch.jit.load("model.pt", map_location="cpu")
+model.eval()
 
-IMG_HEIGHT, IMG_WIDTH = 224, 224
+# -------------------------
+# CLASS NAMES
+# -------------------------
+
+CLASS_NAMES = [
+    "Aerva lanata (Mountain Knotgrass)",
+    "Aloe vera (Ghritkumari)",
+    "Andrographis paniculata (Kalmegh)",
+    "Bacopa monnieri (Brahmi)",
+    "Calotropis gigantea (Aak, Madar)",
+    "Centella asiatica (Gotu Kola)",
+    "Chromolaena odorata (Siam Weed)",
+    "Cissus quadrangularis (Hadjod)",
+    "Clerodendrum infortunatum (Bharangi)",
+    "Clitoria ternatea (Aparajita, Shankhpushpi Blue variety)",
+    "Coccinia grandis (Kundru, Ivy Gourd)",
+    "Curcuma longa (Haldi, Turmeric)",
+    "Datura metel Linn (Dhatura)",
+    "Desmodium gangeticum (Shalaparni)",
+    "Hemigraphis colorata (Red Flame Ivy)",
+    "Kaempferia galanga Linn (Kachur, Aromatic Ginger)",
+    "Mentha spicata (Pudina, Spearmint)",
+    "Not a herb",
+    "Ocimum gratissimum (Ram Tulsi, Vana Tulsi)",
+    "Ocimum tenuiflorum (Krishna Tulsi, Holy Basil)",
+    "Oxalis corniculata (Changeri, Indian Sorrel)",
+    "Peperomia pellucida (Shiny Bush, Rat’s Ear)",
+    "Phyllanthus niruri (Bhumi Amla, Stonebreaker)",
+    "Piper betle (Paan)",
+    "Piper longum (Pippali, Long Pepper)",
+    "Piper nigrum (Kali Mirch, Black Pepper)",
+    "Plectranthus barbatus (Patharchur, Indian Coleus)",
+    "Plumbago indica (Red Chitrak)",
+    "Pseudarthria viscida (Salaparni)",
+    "Ricinus communis Linn (Arandi, Castor Plant)",
+    "Tinospora cordifolia (Giloy, Guduchi)"
+]
+
+# -------------------------
+# IMAGE TRANSFORMS
+# Fusion model needs TWO inputs
+# -------------------------
+
+transform_resnet = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
+])
+
+transform_inception = transforms.Compose([
+    transforms.Resize((299, 299)),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.485, 0.456, 0.406],
+        std=[0.229, 0.224, 0.225]
+    )
+])
+
+# -------------------------
+# ROOT ENDPOINT
+# -------------------------
 
 @app.get("/")
 def home():
-    return {"message": "Herb AI Prediction API is running."}
+    return {"message": "Herb AI Fusion Model API running"}
+
+# -------------------------
+# PREDICTION ENDPOINT
+# -------------------------
 
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
     try:
         temp_file = f"temp_{file.filename}"
 
+        # Save uploaded image
         with open(temp_file, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
 
-        img = image.load_img(temp_file, target_size=(IMG_HEIGHT, IMG_WIDTH))
-        x = image.img_to_array(img)
-        x = np.expand_dims(x, axis=0)
-        x = preprocess_input(x)
+        img = Image.open(temp_file).convert("RGB")
 
-        preds = model.predict(x)
-        predicted_index = int(np.argmax(preds[0]))
-        probability = float(preds[0][predicted_index])
-        predicted_class = CLASS_NAMES[predicted_index]
+        # Prepare BOTH inputs
+        img_res = transform_resnet(img).unsqueeze(0)
+        img_inc = transform_inception(img).unsqueeze(0)
 
-        if probability < 0.5:
-            predicted_class = "Not a Herb"
+        with torch.no_grad():
+            outputs = model(img_res, img_inc)
+            probs = torch.softmax(outputs, dim=1)
+            probability, predicted_index = torch.max(probs, 1)
+
+        predicted_class = CLASS_NAMES[predicted_index.item()]
+        probability = probability.item()
+
+        
 
         os.remove(temp_file)
 
-        return {"class": predicted_class, "probability": probability}
+        return {
+            "class": predicted_class,
+            "probability": probability
+        }
 
     except Exception as e:
         return {"error": str(e)}
