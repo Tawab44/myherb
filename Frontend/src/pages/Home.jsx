@@ -249,7 +249,7 @@ const Home = () => {
         <div style={{ flex: 1 }}>
           <h2 style={{ color: "#166534" }}>Main Features 🚀</h2>
           <p style={{ marginTop: "15px", lineHeight: "1.7" }}>
-            Herb AI can accurately identify over 25 medicinal herbs from
+            Herb AI can accurately identify over 30 medicinal herbs from
             an image. It provides detailed information including medicinal and
             culinary benefits, practical usage tips, and traditional knowledge.
           </p>
