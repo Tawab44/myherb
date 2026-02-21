@@ -152,7 +152,7 @@ const Query = () => {
             <label>Part Used *</label>
 
             <div className="option-group">
-              {["Leaf", "Root", "Flower", "Seed", "Bark", "Whole Plant"].map(
+              {["Leaf", "Root", "Flower", "Seed", "Bark", "Full Plant"].map(
                 (part) => (
                   <label key={part} className="option-item">
                     <input

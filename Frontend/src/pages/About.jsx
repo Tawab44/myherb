@@ -22,14 +22,18 @@ const About = () => {
         }}
       >
         <img
-          src={aboutImg1}
-          alt="Herb AI"
-          style={{
-            width: "380px",
-            borderRadius: "14px",
-            boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
-          }}
-        />
+  src={aboutImg1}
+  alt="Herb AI"
+  style={{
+    width: "100%",
+    maxWidth: "380px",
+    height: "auto",
+    display: "block",
+    margin: "0 auto",
+    borderRadius: "14px",
+    boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+  }}
+/>
 
         <div
           style={{

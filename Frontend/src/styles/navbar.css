@@ -142,3 +142,41 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
 }
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    height: auto;                 /* allow expansion */
+    flex-wrap: wrap;              /* allow items to move to next line */
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  /* Logo smaller */
+  .logo-img {
+    height: 38px;
+  }
+
+  /* Nav list goes below logo */
+  .nav-links {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Smaller links */
+  .nav-links a,
+  .logout-btn {
+    font-size: 14px;
+  }
+
+  /* Smaller pill buttons */
+  .nav-btn {
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+
+}

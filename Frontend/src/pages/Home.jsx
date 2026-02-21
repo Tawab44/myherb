@@ -155,7 +155,9 @@ const Home = () => {
               alt="Selected plant"
               style={{
                 marginTop: "10px",
+                width: "100%",
                 maxWidth: "300px",
+                height: "auto",
                 borderRadius: "10px",
                 border: "2px solid #16a34a",
               }}
@@ -224,7 +226,12 @@ const Home = () => {
         <img
           src={loginImg}
           alt="Login"
-          style={{ width: "350px", borderRadius: "12px" }}
+          style={{
+                width: "100%",
+                maxWidth: "350px",
+                height: "auto",
+                borderRadius: "12px",
+              }}
         />
       </div>
 
@@ -243,7 +250,12 @@ const Home = () => {
         <img
           src={featureImg}
           alt="Features"
-          style={{ width: "350px", borderRadius: "12px" }}
+          style={{
+                  width: "100%",
+                  maxWidth: "350px",
+                  height: "auto",
+                  borderRadius: "12px",
+                     }}
         />
 
         <div style={{ flex: 1 }}>
