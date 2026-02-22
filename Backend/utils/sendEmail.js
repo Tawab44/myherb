@@ -25,12 +25,12 @@ export const sendConfirmationEmail = async (to, name) => {
       </p>
 
       <p>
-        Our team will carefully review your submission and,
+        Our team will carefully review your submission and
         once approved, add it to our herb library.
       </p>
 
       <p>
-        Thanks again for supporting our growing community.
+        Thanks again for contributing to our growing herb community.
       </p>
 
       <br/>
