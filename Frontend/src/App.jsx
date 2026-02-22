@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Vgarden from "./pages/Vgarden";
 import Query from "./pages/Query";
+import Chatbot from "./components/Chatbot";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           }
         />
       </Routes>
+ <Chatbot/>     
     </>
   );
 }
