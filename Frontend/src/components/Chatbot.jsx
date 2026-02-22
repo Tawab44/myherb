@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "./chatbot.css";
+import "../styles/Chatbot.css";
 
 
 const Chatbot = () => {

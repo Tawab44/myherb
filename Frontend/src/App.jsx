@@ -13,7 +13,6 @@ import Vgarden from "./pages/Vgarden";
 import Query from "./pages/Query";
 import Chatbot from "./components/Chatbot";
 
-
 function App() {
   return (
     <>
@@ -26,7 +25,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/query" element={<Query />} />
-
+        
 
         {/* Protected route */}
         <Route
@@ -37,7 +36,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-      </Routes>
+      </Routes>    
  <Chatbot/>     
     </>
   );

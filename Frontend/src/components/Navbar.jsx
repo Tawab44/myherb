@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 import logo from "../assets/hlogo.png"
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -51,6 +52,9 @@ const Navbar = () => {
 </li>
           </>
         )}
+         <li>
+          <LanguageSwitcher />
+        </li>
       </ul>
     </nav>
   );
