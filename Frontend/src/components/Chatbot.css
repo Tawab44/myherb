@@ -83,6 +83,7 @@
   border-radius: 16px;
   font-size: 14px;
   word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 /* USER LEFT */
@@ -128,6 +129,11 @@
 
 .chat-input button:hover {
   background: #15803d;
+}
+
+.message.bot {
+  background: #e5e7eb;
+  line-height: 1.5;
 }
 
 /* MOBILE RESPONSIVE */

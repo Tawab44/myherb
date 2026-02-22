@@ -62,7 +62,7 @@ const Chatbot = () => {
                 key={i}
                 className={`message ${msg.sender}`}
               >
-                {msg.text}
+                {msg.text.replace(/\*\*/g, "")}
               </div>
             ))}
 
