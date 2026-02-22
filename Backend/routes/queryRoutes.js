@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import Query from "../models/Query.js";
+import { sendConfirmationEmail } from "../utils/sendEmail.js";
 
 const router = express.Router();
 
@@ -35,8 +36,18 @@ router.post("/", upload.single("image"), async (req, res) => {
 
     await query.save();
 
-    res.status(201).json({ message: "Submission successful 🌿" });
+    //SEND CONFIRMATION EMAIL
+    await sendConfirmationEmail(
+      req.body.email,
+      req.body.contributorName
+    );
+
+    res.status(201).json({
+      message: "Submission successful 🌿 Email sent!",
+    });
+
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Submission failed" });
   }
 });
