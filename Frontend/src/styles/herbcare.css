@@ -1,24 +1,51 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+
+
 .herbcare-container {
-  min-height: 100vh;
-  padding: 40px;
-  text-align: center;
-  background: #f3fff3;
-}
-
-.herbcare-container h1 {
-  font-size: 2.5rem;
-  color: #2e7d32;
-  margin-bottom: 20px;
-}
-
-.herbcare-container p {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.coming-soon {
-  margin-top: 60px;
   padding: 30px;
-  background: #e8f5e9;
+  text-align: center;
+}
+
+.search-input {
+  margin: 20px 0;
+  padding: 12px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.herb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.herb-card {
+  background: #f0fdf4;
+  padding: 20px;
   border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+}
+
+.herb-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.care-list {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.fact-box {
+  margin-top: 15px;
+  padding: 12px;
+  background: #e8f5e9;
+  border-left: 6px solid #2e7d32;
+  border-radius: 8px;
 }

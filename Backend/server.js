@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoutes.js";
 import plantRoutes from "./routes/plantRoutes.js";
 import queryRoutes from "./routes/queryRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import careRoutes from "./routes/careRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -19,6 +20,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/plants", plantRoutes);
 app.use("/api/queries", queryRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/care", careRoutes);
 
 app.use("/uploads", express.static("uploads"));
 
