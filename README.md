@@ -7,130 +7,130 @@ It combines Machine Learning, MERN stack backend, and modern React frontend to c
 
 🔍 AI Herb Identification
 
-Upload an image of a plant → AI predicts the herb using deep learning models.
+--Upload an image of a plant → AI predicts the herb using deep learning models.
 
-Fusion CNN model (ResNet + Inception)
+--Fusion CNN model (ResNet + Inception)
 
-PyTorch / TensorFlow support
+--PyTorch / TensorFlow support
 
-Confidence score output
+--Confidence score output
 
-Detects non-herb images
+--Detects non-herb images
 
 
 🌱 Virtual Garden (VGarden)
 
-Explore curated medicinal herb information:
+----Explore curated medicinal herb information:
 
-Herb name & scientific name
+--Herb name & scientific name
 
-Benefits & uses
+--Benefits & uses
 
-Symptoms treated
+--Symptoms treated
 
-Traditional knowledge
+--Traditional knowledge
 
-Visual herb cards
+--Visual herb cards
 
 
 🧑‍🌾 HerbCare Page (Accurate Information)
 
-Provides guidance on how to care for medicinal plants.
+--Provides guidance on how to care for medicinal plants.
 
 Includes:
 
-Watering requirements 💧
+--Watering requirements 💧
 
-Sunlight needs ☀️
+--Sunlight needs ☀️
 
-Fertilization 🌍
+--Fertilization 🌍
 
-Maintenance tips 🌿
+--Maintenance tips 🌿
 
-Growth advice 🔥
+--Growth advice 🔥
 
 
 📝 Herb Contribution (Query System)
 
-Users can submit new herb information to expand the library.
+--Users can submit new herb information to expand the library.
 
-Upload herb image
+--Upload herb image
 
-Add details & notes
+--Add details & notes
 
-Contributor information
+--Contributor information
 
-Stored in database
+--Stored in database
 
-Review & approval workflow
+--Review & approval workflow
 
 📧 Automatic Email Confirmation
 
-After submission, users receive:
+----After submission, users receive:
 
 ✔️ Confirmation email
 ✔️ Appreciation message
 ✔️ Status information
 
-Implemented using Nodemailer + Gmail SMTP.
+--Implemented using Nodemailer + Gmail SMTP.
 
 
 🤖 AI Chatbot Assistant
 
-Integrated conversational assistant for herb-related questions.
+--Integrated conversational assistant for herb-related questions.
 
-Powered by Google Gemini API
+--Powered by Google Gemini API
 
-Context-aware responses (memory supported)
+--Context-aware responses (memory supported)
 
-Floating chat interface
+--Floating chat interface
 
-Real-time replies
+--Real-time replies
 
-Thinking indicator
+--Thinking indicator
 
 
 🌐 Multi-Language Support
 
-Translate the entire website into multiple languages.
+--Translate the entire website into multiple languages.
 
-Google Translate integration
+--Google Translate integration
 
-Custom navbar language selector
+--Custom navbar language selector
 
-Instant translation
+------Instant translation
 
-Clean UI without Google banner
+--Clean UI without Google banner
 
 
 🔐 Authentication System
 
-Secure user accounts using JWT.
+----Secure user accounts using JWT.
 
-Signup / Login
+----Signup / Login
 
-Protected routes
+----Protected routes
 
-Token-based authentication
+----Token-based authentication
 
-User data stored in MongoDB
+----User data stored in MongoDB
 
 
 🧠 Machine Learning Component
 
-Located in MLend/
+--Located in MLend/
 
-Models included:
+--Models included:
 
-Fusion Model (.pt)
+--Fusion Model (.pt)
 
-ResNet models (.h5)
+--ResNet models (.h5)
 
-FastAPI inference server
+--FastAPI inference server
 
-Image preprocessing pipeline
+--Image preprocessing pipeline
 
-The model receives image input and returns predicted herb class.
+--The model receives image input and returns predicted herb class.
 
 
 --📂 Project Structure Overview--
@@ -167,24 +167,7 @@ The model receives image input and returns predicted herb class.
             ├── vite.svg
         └── 📁src
             └── 📁assets
-                ├── 200.webp
-                ├── abtbg1.jpg
-                ├── ggreengear.webp
-                ├── greengear2.png
-                ├── herbbg.jpg
-                ├── herbbgtr.png
-                ├── herbbgtr2.png
-                ├── hlogo.png
-                ├── homembg.gif
-                ├── lmagni.png
-                ├── mist.gif
-                ├── mist2.gif
-                ├── react.svg
-                ├── Scan.gif
-                ├── scanner.gif
-                ├── takpl.png
-                ├── vgardenbg.webp
-                ├── vgardenf.png
+                ├── all imgs                
             └── 📁components
                 ├── Chatbot.jsx
                 ├── LanguageSwitcher.jsx
@@ -235,22 +218,22 @@ The model receives image input and returns predicted herb class.
 
 🔹 Backend — Node.js / Express
 
-Handles authentication, data storage, chatbot, and email.
+--Handles authentication, data storage, chatbot, and email.
 
 Key components:
 
-MongoDB database connection
+--MongoDB database connection
 
-REST APIs
+--REST APIs
 
-File uploads
+--File uploads
 
-Email system
+--Email system
 
-Chatbot API
+--Chatbot API
 
 
-Important routes:
+--Important routes:
 
 Route	             Purpose
 /api/auth	    User authentication
@@ -263,110 +246,110 @@ Route	             Purpose
 
 🔹 Frontend — React + Vite
 
-User interface for all features.
+--User interface for all features.
 
 Pages include:
 
-Home — AI prediction tool
+--Home — AI prediction tool
 
-About — Project overview
+--About — Project overview
 
-VGarden — Herb library
+--VGarden — Herb library
 
-HerbCare — Care instructions
+--HerbCare — Care instructions
 
-Query — Contribution form
+--Query — Contribution form
 
-Login / Signup — Authentication
+--Login / Signup — Authentication
 
 Reusable components:
 
-Navbar
+--Navbar
 
-Chatbot
+--Chatbot
 
-Language Switcher
+--Language Switcher
 
-Protected Route wrapper
+--Protected Route wrapper
 
 
 🔹 MLend — Machine Learning API
 
-FastAPI server that performs image classification.
+--FastAPI server that performs image classification.
 
 Functions:
 
-Load trained models
+--Load trained models
 
-Preprocess uploaded images
+--Preprocess uploaded images
 
-Return prediction results
+--Return prediction results
 
-Serve AI inference endpoint
+--Serve AI inference endpoint
 
 ⚙️ How the Project Works (Step-by-Step)
 🔎 1. Herb Identification
 
--User uploads plant image on Home page
+--User uploads plant image on Home page
 
--Image sent to ML API
+--Image sent to ML API
 
--Model processes image
+--Model processes image
 
--Prediction returned to frontend
+--Prediction returned to frontend
 
--Result displayed to user
+--Result displayed to user
 
 
 🌿 2. Virtual Garden Browsing
 
--User logs in
+--User logs in
 
--Frontend requests herb data
+--Frontend requests herb data
 
--Backend fetches from MongoDB
+--Backend fetches from MongoDB
 
--Displays herb cards
+--Displays herb cards
 
 
 🧑‍🌾 3. Herb Care Information
 
--User visits HerbCare page
+--User visits HerbCare page
 
--Backend processes care data and provides accurate up-to-date data
+--Backend processes care data and provides accurate up-to-date data
 
--Information displayed and Search is Opted to get specific Herb care info
+--Information displayed and Search is Opted to get specific Herb care info
 
 
 📝 4. Herb Contribution
 
--User fills submission form
+--User fills submission form
 
--Uploads image + details
+--Uploads image + details
 
--Backend stores entry
+--Backend stores entry
 
--Confirmation email sent to user
+--Confirmation email sent to user
 
 
 🤖 5. Chatbot Interaction
 
--User sends message
+---User sends message
 
--Backend forwards to Gemini API
+---Backend forwards to Gemini API
 
--AI generates response
+---AI generates response
 
--Reply displayed in chat window
+---Reply displayed in chat window
 
 
 🌐 6. Language Translation
 
--User selects language
+--User selects language
 
--Google Translate applies translation
+--Google Translate applies translation
 
--UI updates instantly translating the whole page
+--UI updates instantly translating the whole page
 
 
 🧰 Technologies Used
@@ -416,43 +399,39 @@ AI Services
 Google Gemini API (chatbot) multiple models
 
 
-🛠️ Installation & Setup
+---🛠️ Installation & Setup---
 🔹 Clone Repository or Install Zip 
 git clone https://github.com/yourusername/myherb.git
 cd myherb
 
 🔹 Backend Setup
-cd Backend
-npm install
-npm run dev
+
+-cd Backend
+
+-npm install
+
+-npm run dev
+
 
 Create .env: 
 
 🔹 Frontend Setup
-cd Frontend
-npm install
-npm run dev
+
+-cd Frontend
+
+-npm install
+
+-npm run dev
 
 
 🔹 ML API Setup
-cd MLend
-pip install -r requirements.txt
-uvicorn app:app --reload
+
+-cd MLend
+-pip install -r requirements.txt
+-uvicorn app:app --reload
 
 
-🔮 Future Improvements
-
-Admin dashboard for approvals
-
-Herb image dataset expansion
-
-Offline model deployment
-
-Live herb recommendations
-
-Advanced Herb disease detection
-
-
+ 🔚
 
 If you found this project useful, feel free to ⭐ star the repository.
 
