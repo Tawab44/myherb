@@ -75,8 +75,8 @@ iframe.goog-te-banner-frame {
 /* Shrink Google icons */
 .goog-te-gadget-icon,
 .goog-te-gadget-simple img {
-  width: 10px !important;
-  height: 10px !important;
+  width: 19px !important;
+  height: 20px !important;
   opacity: 0.6;
 }
 
@@ -143,4 +143,33 @@ iframe.goog-te-banner-frame {
   padding: 6px 10px;
   border-radius: 999px;
   backdrop-filter: blur(6px);
+}
+/* ================= REMOVE GOOGLE HOVER TOOLTIP ================= */
+
+/* Remove highlight background */
+.goog-text-highlight {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Hide tooltip popup */
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+/* Remove border outline on hover */
+.goog-text-highlight:hover {
+  outline: none !important;
+}
+
+/* Remove translation frame */
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+/* Remove injected iframe tooltips */
+iframe.goog-te-balloon-frame {
+  display: none !important;
 }
