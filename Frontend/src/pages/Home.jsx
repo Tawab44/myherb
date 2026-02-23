@@ -5,6 +5,7 @@ import homeBg from "../assets/mist.gif";
 import loginImg from "../assets/vgardenf.png";
 import featureImg from "../assets/herbbgtr2.png";
 import youtubeBg from "../assets/takpl.png";
+import "../styles/home.css";
 
 const Home = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -86,7 +87,7 @@ const Home = () => {
                     color:"#ffffff",
                     fontFamily: "'Poppins', sans-serif",
                     fontWeight: "700",}}>
-          Upload an image of a plant and let AI {""}<span style={{ color: "#49d54d" }}>Identify</span> it for you.
+          Upload an image of a plant and let AI {""}<span className="flowGreen">Identify</span> it for you.
         </h1>
 
         <h4 style={{ marginTop: "10px", 

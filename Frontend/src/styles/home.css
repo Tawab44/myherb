@@ -1,0 +1,18 @@
+.flowGreen {
+  background: linear-gradient(90deg, #6aff6c, #00ff66, #ffffff);
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: flowRightToLeft 1.5s linear infinite;
+}
+
+@keyframes flowRightToLeft {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
