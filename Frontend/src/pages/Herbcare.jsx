@@ -10,9 +10,7 @@ const Herbcare = () => {
   useEffect(() => {
     const fetchHerbs = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/api/care"
-        );
+        const res = await axios.get("http://localhost:5000/api/care");
         setHerbs(res.data);
       } catch (err) {
         console.error(err);
@@ -45,6 +43,14 @@ const Herbcare = () => {
 
       <h1>🌿 Your Herb care starts here 🌿</h1>
 
+      {/* CENTERED INTRO PARAGRAPH */}
+      <p className="intro-text">
+        Herbs are natural medicine that thrive with proper sunlight, water,
+        and soil, producing richer aroma and nutrients. 🌿 Many varieties
+        repel pests and attract pollinators, while 🌱 regular harvesting
+        promotes fuller growth and more flavorful leaves.
+      </p>
+
       {/* SEARCH BAR */}
       <input
         type="text"
@@ -58,46 +64,57 @@ const Herbcare = () => {
         <p>No herbs found 🌱</p>
       )}
 
-      {/* HERB CARDS */}
-      <div className="herb-grid">
-        {filteredHerbs.map((herb) => (
-          <div key={herb._id} className="herb-card">
+      {/* 🌿 SHOW ALL HERBS ONE AFTER ANOTHER */}
+      {filteredHerbs.map((herb) => (
+        <div key={herb._id} className="herb-card">
 
-            <h2>
-              {herb.commonName} ({herb.scientificName})
-            </h2>
+          <h2>
+            {herb.commonName} ({herb.scientificName})
+          </h2>
 
-            <img src={herb.imageUrl} alt={herb.commonName} />
+          <img src={herb.imageUrl} alt={herb.commonName} />
 
-            <h3>Also Known As</h3>
-            <p>{herb.alsoKnownAs.join(", ")}</p>
+          <h3>Also Known As</h3>
+          <p className="left-text">
+            {herb.alsoKnownAs.join(", ")}
+          </p>
 
-            <h3>About This Plant</h3>
-            <p>{herb.about}</p>
+          <h3>About This Plant</h3>
+          <p className="left-text">
+            {herb.about}
+          </p>
 
-            <h3>Plant Care Instructions</h3>
+          <h3>Plant Care Instructions</h3>
 
-            <ul className="care-list">
-              <li>🌱 Outdoor Size: {herb.care.outdoorSize}</li>
-              <li>☀️ Light: {herb.care.light}</li>
-              <li>💧 Humidity: {herb.care.humidity}</li>
-              <li>🌿 Fertilizing: {herb.care.fertilizing}</li>
-              <li>✂️ Pruning: {herb.care.pruning}</li>
-              <li>🐛 Pests: {herb.care.pests}</li>
-              <li>🏠 Indoor Size: {herb.care.indoorSize}</li>
-              <li>🚿 Watering: {herb.care.watering}</li>
-              <li>🌡️ Temperature: {herb.care.temperature}</li>
-              <li>📅 Season: {herb.care.season}</li>
-              <li>⭐ Difficulty: {herb.care.difficulty}</li>
-            </ul>
+          {/* TWO-COLUMN GRID */}
+          <div className="care-grid">
 
-            <div className="fact-box">
-              💡 Did You Know? {herb.fact}
-            </div>
+            <div className="care-box">🌱 Outdoor Size: {herb.care.outdoorSize}</div>
+            <div className="care-box">☀️ Light: {herb.care.light}</div>
+
+            <div className="care-box">💧 Humidity: {herb.care.humidity}</div>
+            <div className="care-box">🌿 Fertilizing: {herb.care.fertilizing}</div>
+
+            <div className="care-box">✂️ Pruning: {herb.care.pruning}</div>
+            <div className="care-box">🐛 Pests: {herb.care.pests}</div>
+
+            <div className="care-box">🏠 Indoor Size: {herb.care.indoorSize}</div>
+            <div className="care-box">🚿 Watering: {herb.care.watering}</div>
+
+            <div className="care-box">🌡️ Temperature: {herb.care.temperature}</div>
+            <div className="care-box">📅 Season: {herb.care.season}</div>
+
+            <div className="care-box full">⭐ Difficulty: {herb.care.difficulty}</div>
 
           </div>
-        ))}
-      </div>
+
+          <div className="fact-box">
+            💡 Did You Know? {herb.fact}
+          </div>
+
+        </div>
+      ))}
+
     </div>
   );
 };

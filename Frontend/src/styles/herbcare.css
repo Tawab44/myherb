@@ -49,3 +49,59 @@
   border-left: 6px solid #2e7d32;
   border-radius: 8px;
 }
+
+/* Intro paragraph */
+.intro-text {
+  max-width: 700px;
+  margin: 15px auto 25px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Left-aligned text sections */
+.left-text {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+/* SINGLE CARD CENTERING */
+.herb-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #f0fdf4;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* TWO COLUMN CARE GRID */
+.care-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* LIGHT CARE BOXES */
+.care-box {
+  background: #e8f5e9;
+  padding: 12px 14px;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* Make last item span full width */
+.care-box.full {
+  grid-column: span 2;
+}
+
+/* Stack cards vertically with spacing */
+.herb-card {
+  max-width: 800px;
+  margin: 25px auto;
+  background: #f0fdf4;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
