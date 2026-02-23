@@ -12,6 +12,7 @@ import Signup from "./pages/Signup";
 import Vgarden from "./pages/Vgarden";
 import Query from "./pages/Query";
 import Chatbot from "./components/Chatbot";
+import Herbcare from "./pages/Herbcare";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/query" element={<Query />} />
+        <Route path="/herbcare" element={<Herbcare />} />
         
 
         {/* Protected route */}

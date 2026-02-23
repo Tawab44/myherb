@@ -23,6 +23,7 @@ const Navbar = () => {
       <ul className="nav-links">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
+        <Link to="/herbcare" className="nav-btn herbcare-btn">Herb Care</Link>
         <li><Link to="/query" className="nav-btn query-btn">Herb Query</Link></li>
 
         {token ? (

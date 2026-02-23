@@ -2,6 +2,7 @@
   background: linear-gradient(90deg, #6aff6c, #00ff66, #ffffff);
   background-size: 200% auto;
 
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 

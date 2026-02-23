@@ -1,0 +1,24 @@
+.herbcare-container {
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+  background: #f3fff3;
+}
+
+.herbcare-container h1 {
+  font-size: 2.5rem;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.herbcare-container p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.coming-soon {
+  margin-top: 60px;
+  padding: 30px;
+  background: #e8f5e9;
+  border-radius: 12px;
+}
