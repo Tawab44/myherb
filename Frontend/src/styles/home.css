@@ -17,3 +17,46 @@
     background-position: 0% center;
   }
 }
+
+/* Container to allow overlay */
+.preview-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Preview image */
+.preview-img {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid #16a34a;
+}
+
+/* Scanning overlay */
+.scan-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+/* GIF size */
+.scan-overlay img {
+  width: 200px;
+  margin-bottom: 10px;
+}

@@ -6,12 +6,14 @@ import loginImg from "../assets/vgardenf.png";
 import featureImg from "../assets/herbbgtr2.png";
 import youtubeBg from "../assets/takpl.png";
 import "../styles/home.css";
+import scanGif from "../assets/Scan.gif";
 
 const Home = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [prediction, setPrediction] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [scanning, setScanning] = useState(false);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -28,36 +30,41 @@ const Home = () => {
     setPrediction(null);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!selectedImage) {
-      alert("Please select an image!");
-      return;
-    }
+  if (!selectedImage) {
+    alert("Please select an image!");
+    return;
+  }
 
-    setLoading(true);
+  setLoading(true);
+  setScanning(true);   // 🔥 START SCANNING
 
-    const formData = new FormData();
-    formData.append("file", selectedImage);
+  const formData = new FormData();
+  formData.append("file", selectedImage);
 
-    try {
-      const res = await axios.post(
-        "http://127.0.0.1:8000/predict/",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+  try {
+    const res = await axios.post(
+      "http://127.0.0.1:8000/predict/",
+      formData,
+      { headers: { "Content-Type": "multipart/form-data" } }
+    );
 
+    // ⏳ Ensure scanning shows for at least 5 sec
+    setTimeout(() => {
       setPrediction(res.data);
-    } catch (err) {
-      console.error(err);
-      alert("Error uploading or predicting!");
-    } finally {
+      setScanning(false);
       setLoading(false);
-    }
-  };
+    }, 5000);
+
+  } catch (err) {
+    console.error(err);
+    alert("Error uploading or predicting!");
+    setScanning(false);
+    setLoading(false);
+  }
+};
 
   return (
     <>
@@ -149,22 +156,28 @@ const Home = () => {
 
         {/* Image Preview */}
         {preview && (
-          <div style={{ marginTop: "25px" }}>
-            <h4>Selected Image Preview:</h4>
-            <img
-              src={preview}
-              alt="Selected plant"
-              style={{
-                marginTop: "10px",
-                width: "100%",
-                maxWidth: "300px",
-                height: "auto",
-                borderRadius: "10px",
-                border: "2px solid #16a34a",
-              }}
-            />
-          </div>
-        )}
+  <div style={{ marginTop: "25px" }}>
+    <h4>Selected Image Preview:</h4>
+
+    <div className="preview-container">
+
+      <img
+        src={preview}
+        alt="Selected plant"
+        className="preview-img"
+      />
+
+      {/* 🔥 SCANNING OVERLAY */}
+      {scanning && (
+        <div className="scan-overlay">
+          <img src={scanGif} alt="Scanning..." />
+          <p>Scanning plant...</p>
+        </div>
+      )}
+
+    </div>
+  </div>
+)}
 
         {/* Prediction Display */}
         {prediction && !prediction.error && (
