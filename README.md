@@ -1,137 +1,459 @@
-🌿 Herb AI – Medicinal Plant Identification Platform
+🌿 Herb AI — Intelligent Medicinal Herb Identification & Knowledge Platform
 
-Herb AI is an intelligent full-stack web application that identifies medicinal herbs from images using deep learning. It provides accurate predictions along with detailed herb information such as scientific name, medicinal properties, uses, and symptoms treated.
+Herb AI is a full-stack AI-powered web application that identifies medicinal herbs from images and provides detailed information, care guidance, and community contributions.
+It combines Machine Learning, MERN stack backend, and modern React frontend to create a complete herb exploration platform.
 
-The project combines Machine Learning, Backend APIs, and a modern React frontend to deliver a smooth, user-friendly experience accessible from any device.
+🚀 Live Features
 
-🚀 Features
-🌱 AI-Powered Plant Identification
+🔍 AI Herb Identification
 
-🧠 Deep Learning model (CNN, ResNet, InceptionV3)
-📸 Image upload & prediction
+Upload an image of a plant → AI predicts the herb using deep learning models.
 
-📊 Prediction confidence score
+Fusion CNN model (ResNet + Inception)
 
-🌿 Virtual Garden with medicinal herb cards
-🔍 Search herbs by name
+PyTorch / TensorFlow support
 
-🔐 User authentication (Login / Signup)
+Confidence score output
 
-☁️ MongoDB Atlas cloud database
-
-📱 Responsive design (mobile & desktop)
+Detects non-herb images
 
 
-<img width="814" height="192" alt="image" src="https://github.com/user-attachments/assets/3d7380c6-a7af-4329-ac7b-188761f8dd82" />
+🌱 Virtual Garden (VGarden)
+
+Explore curated medicinal herb information:
+
+Herb name & scientific name
+
+Benefits & uses
+
+Symptoms treated
+
+Traditional knowledge
+
+Visual herb cards
 
 
-🧰 Tech Stack
---Frontend--
+🧑‍🌾 HerbCare Page (Accurate Information)
 
-React.js (Vite)
+Provides guidance on how to care for medicinal plants.
+
+Includes:
+
+Watering requirements 💧
+
+Sunlight needs ☀️
+
+Fertilization 🌍
+
+Maintenance tips 🌿
+
+Growth advice 🔥
+
+
+📝 Herb Contribution (Query System)
+
+Users can submit new herb information to expand the library.
+
+Upload herb image
+
+Add details & notes
+
+Contributor information
+
+Stored in database
+
+Review & approval workflow
+
+📧 Automatic Email Confirmation
+
+After submission, users receive:
+
+✔️ Confirmation email
+✔️ Appreciation message
+✔️ Status information
+
+Implemented using Nodemailer + Gmail SMTP.
+
+
+🤖 AI Chatbot Assistant
+
+Integrated conversational assistant for herb-related questions.
+
+Powered by Google Gemini API
+
+Context-aware responses (memory supported)
+
+Floating chat interface
+
+Real-time replies
+
+Thinking indicator
+
+
+🌐 Multi-Language Support
+
+Translate the entire website into multiple languages.
+
+Google Translate integration
+
+Custom navbar language selector
+
+Instant translation
+
+Clean UI without Google banner
+
+
+🔐 Authentication System
+
+Secure user accounts using JWT.
+
+Signup / Login
+
+Protected routes
+
+Token-based authentication
+
+User data stored in MongoDB
+
+
+🧠 Machine Learning Component
+
+Located in MLend/
+
+Models included:
+
+Fusion Model (.pt)
+
+ResNet models (.h5)
+
+FastAPI inference server
+
+Image preprocessing pipeline
+
+The model receives image input and returns predicted herb class.
+
+
+--📂 Project Structure Overview--
+
+```
+└── 📁myherb
+    └── 📁Backend
+        └── 📁config
+            ├── db.js
+        └── 📁models
+            ├── Careinfo.js
+            ├── Plant.js
+            ├── Query.js
+            ├── User.js
+        └── 📁routes
+            ├── authRoutes.js
+            ├── careRoutes.js
+            ├── chatRoutes.js
+            ├── plantRoutes.js
+            ├── queryRoutes.js
+        └── 📁services
+            ├── geminiService.js
+        └── 📁uploads
+            ├── 1771728033567-testgingata.jpg
+            ├── 1771729621736-notmint.jpg
+        └── 📁utils
+            ├── sendEmail.js
+        ├── .env
+        ├── package-lock.json
+        ├── package.json
+        ├── server.js
+    └── 📁Frontend
+        └── 📁public
+            ├── vite.svg
+        └── 📁src
+            └── 📁assets
+                ├── 200.webp
+                ├── abtbg1.jpg
+                ├── ggreengear.webp
+                ├── greengear2.png
+                ├── herbbg.jpg
+                ├── herbbgtr.png
+                ├── herbbgtr2.png
+                ├── hlogo.png
+                ├── homembg.gif
+                ├── lmagni.png
+                ├── mist.gif
+                ├── mist2.gif
+                ├── react.svg
+                ├── Scan.gif
+                ├── scanner.gif
+                ├── takpl.png
+                ├── vgardenbg.webp
+                ├── vgardenf.png
+            └── 📁components
+                ├── Chatbot.jsx
+                ├── LanguageSwitcher.jsx
+                ├── Navbar.jsx
+                ├── ProtectedRoute.jsx
+            └── 📁pages
+                ├── About.jsx
+                ├── Herbcare.jsx
+                ├── Home.jsx
+                ├── Login.jsx
+                ├── Query.jsx
+                ├── Signup.jsx
+                ├── Vgarden.jsx
+            └── 📁styles
+                ├── auth.css
+                ├── Chatbot.css
+                ├── herbcare.css
+                ├── home.css
+                ├── language.css
+                ├── navbar.css
+                ├── query.css
+            ├── App.jsx
+            ├── index.css
+            ├── main.jsx
+        ├── .gitignore
+        ├── eslint.config.js
+        ├── index.html
+        ├── package-lock.json
+        ├── package.json
+        ├── README.md
+        ├── vite.config.js
+    └── 📁MLend
+        └── 📁__pycache__
+            ├── app.cpython-310.pyc
+        ├── app.py
+        ├── fusion_model.pt
+        ├── model.pt
+        ├── requirements.txt
+        ├── ResNet50_m1.h5
+        ├── ResNet50_m3.h5
+    ├── .gitignore
+    ├── package-lock.json
+    ├── package.json
+    └── README.md
+```
+
+🏗️ Project Architecture-
+
+🔹 Backend — Node.js / Express
+
+Handles authentication, data storage, chatbot, and email.
+
+Key components:
+
+MongoDB database connection
+
+REST APIs
+
+File uploads
+
+Email system
+
+Chatbot API
+
+
+Important routes:
+
+Route	             Purpose
+/api/auth	    User authentication
+/api/plants	    Herb database
+/api/queries	Herb submissions
+/api/care	    Herb care info
+/api/chat	    Chatbot interaction
+
+
+
+🔹 Frontend — React + Vite
+
+User interface for all features.
+
+Pages include:
+
+Home — AI prediction tool
+
+About — Project overview
+
+VGarden — Herb library
+
+HerbCare — Care instructions
+
+Query — Contribution form
+
+Login / Signup — Authentication
+
+Reusable components:
+
+Navbar
+
+Chatbot
+
+Language Switcher
+
+Protected Route wrapper
+
+
+🔹 MLend — Machine Learning API
+
+FastAPI server that performs image classification.
+
+Functions:
+
+Load trained models
+
+Preprocess uploaded images
+
+Return prediction results
+
+Serve AI inference endpoint
+
+⚙️ How the Project Works (Step-by-Step)
+🔎 1. Herb Identification
+
+-User uploads plant image on Home page
+
+-Image sent to ML API
+
+-Model processes image
+
+-Prediction returned to frontend
+
+-Result displayed to user
+
+
+🌿 2. Virtual Garden Browsing
+
+-User logs in
+
+-Frontend requests herb data
+
+-Backend fetches from MongoDB
+
+-Displays herb cards
+
+
+🧑‍🌾 3. Herb Care Information
+
+-User visits HerbCare page
+
+-Backend processes care data and provides accurate up-to-date data
+
+-Information displayed and Search is Opted to get specific Herb care info
+
+
+📝 4. Herb Contribution
+
+-User fills submission form
+
+-Uploads image + details
+
+-Backend stores entry
+
+-Confirmation email sent to user
+
+
+🤖 5. Chatbot Interaction
+
+-User sends message
+
+-Backend forwards to Gemini API
+
+-AI generates response
+
+-Reply displayed in chat window
+
+
+🌐 6. Language Translation
+
+-User selects language
+
+-Google Translate applies translation
+
+-UI updates instantly translating the whole page
+
+
+🧰 Technologies Used
+Frontend
+
+React.js
+
+Vite
+
+CSS
 
 Axios
 
 React Router
 
-CSS / Inline Styling
 
+Backend
 
---Backend--
+Node.js
 
-FastAPI / Flask / Express
+Express.js
 
-Python / Node.js
-
-REST APIs
+MongoDB + Mongoose
 
 JWT Authentication
 
+Multer (file uploads)
 
---Machine Learning--
+Nodemailer (email)
+
+
+Machine Learning
+
+Python
+
+FastAPI
+
+PyTorch
 
 TensorFlow / Keras
 
-CNN
-
-ResNet
-
-InceptionV3
-
-.h5 trained model
-
---Database--
-
-MongoDB Atlas (Cloud)
+CNN architectures (ResNet, Inception)
 
 
-⚙️ Setup Instructions 
-1️⃣ Clone the Repository
-git clone https://github.com/YOUR_USERNAME/myherb.git
+AI Services
+
+Google Gemini API (chatbot) multiple models
+
+
+🛠️ Installation & Setup
+🔹 Clone Repository or Install Zip 
+git clone https://github.com/yourusername/myherb.git
 cd myherb
 
-🖥️ Frontend Setup (React + Vite)
+🔹 Backend Setup
+cd Backend
+npm install
+npm run dev
+
+Create .env: 
+
+🔹 Frontend Setup
 cd Frontend
 npm install
 npm run dev
 
 
-Frontend runs at:
-http://localhost:5173
-
-🔧 Backend Setup (API + ML) (MLend)
-Create virtual environment (recommended)
-cd Backend
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
-
-Install dependencies
+🔹 ML API Setup
+cd MLend
 pip install -r requirements.txt
-
-Backend--
-node server.js
-Backend runs at:
-
-http://localhost:5000
-
-🌿 Virtual Garden
-
-Displays medicinal herb cards
-
-Data fetched from MongoDB Atlas
-
-Includes:
-
-Common name
-
-Scientific name
-
-Medicinal properties
-
-Uses
-
-Symptoms treated
-
-Image
-
-🔍 API Endpoints
+uvicorn app:app --reload
 
 
---Authentication--
+🔮 Future Improvements
 
-POST /api/auth/signup
-POST /api/auth/login
+Admin dashboard for approvals
 
---Plants--
+Herb image dataset expansion
 
-GET /api/plants
+Offline model deployment
 
---Prediction--
+Live herb recommendations
 
-POST /predict/
+Advanced Herb disease detection
 
 
 
-
+If you found this project useful, feel free to ⭐ star the repository.
 
 
