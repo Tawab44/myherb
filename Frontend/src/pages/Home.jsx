@@ -226,10 +226,10 @@ const handleSubmit = async (e) => {
       >
         <div style={{ flex: 1 }}>
           <h2 style={{ color: "#14532d" }}>
-            Login to Unlock the Virtual Garden 🌿
+            View Herb Care and Login to Unlock the Virtual Garden 🌿
           </h2>
           <p style={{ marginTop: "15px", lineHeight: "1.7" }}>
-            Login to get access to the Virtual Garden and explore complete
+            View Detailed information in Herbcare and login to get access to the Virtual Garden and explore complete
             information about medicinal herbs including their benefits,
             symptoms treated, and traditional uses.
 
