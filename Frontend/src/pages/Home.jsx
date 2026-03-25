@@ -51,12 +51,12 @@ const handleSubmit = async (e) => {
       { headers: { "Content-Type": "multipart/form-data" } }
     );
 
-    // ⏳ Ensure scanning shows for at least 5 sec
+    // ⏳ Ensure scanning s
     setTimeout(() => {
       setPrediction(res.data);
       setScanning(false);
       setLoading(false);
-    }, 5000);
+    }, 2000);
 
   } catch (err) {
     console.error(err);
@@ -108,51 +108,54 @@ const handleSubmit = async (e) => {
         </h4>
 
         {/* Upload Form */}
-        <form onSubmit={handleSubmit} style={{ marginTop: "30px" }}>
-          <label
-            htmlFor="plantImage"
-            style={{
-              padding: "12px 20px",
-              backgroundColor: "#16a34a",
-              color: "white",
-              borderRadius: "8px",
-              cursor: "pointer",
-              display: "inline-block",
-              fontWeight: "bold",
-              fontFamily: "'Poppins', sans-serif",
-            }}
-          >
-             Upload Plant Image 📤
-          </label>
+        
+<form onSubmit={handleSubmit} style={{ marginTop: "30px" }}>
 
-          <input
-            type="file"
-            id="plantImage"
-            accept="image/*"
-            onChange={handleImageUpload}
-            style={{ display: "none" }}
-          />
+  {/* BUTTON ROW */}
+  <div className="upload-row">
 
-          <br />
+    {/* Upload Button */}
+    <label htmlFor="plantImage" className="upload-btn">
+      Upload Plant Image 📤
+    </label>
 
-          <button
-            type="submit"
-            style={{
-              marginTop: "20px",
-              padding: "10px 25px",
-              backgroundColor: "#15803d",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontFamily: "'Poppins', sans-serif",
-            }}
-            disabled={loading}
-          >
-            {loading ? "Predicting..." : "Predict 🌱"}
-          </button>
-        </form>
+    {/* Camera Button */}
+    <label htmlFor="cameraImage" className="camera-btn">
+      Click Image 📷
+    </label>
+
+  </div>
+
+  {/* Hidden Inputs */}
+
+  {/* Gallery Upload */}
+  <input
+    type="file"
+    id="plantImage"
+    accept="image/*"
+    onChange={handleImageUpload}
+    style={{ display: "none" }}
+  />
+
+  {/* Camera Capture */}
+  <input
+    type="file"
+    id="cameraImage"
+    accept="image/*"
+    capture="environment"
+    onChange={handleImageUpload}
+    style={{ display: "none" }}
+  />
+
+  <button
+    type="submit"
+    className="predict-btn"
+    disabled={loading}
+  >
+    {loading ? "Predicting..." : "Predict 🌱"}
+  </button>
+
+</form>
 
         {/* Image Preview */}
         {preview && (

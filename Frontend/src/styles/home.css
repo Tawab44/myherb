@@ -60,3 +60,62 @@
   width: 200px;
   margin-bottom: 10px;
 }
+
+/* Upload button row */
+.upload-row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Upload button */
+.upload-btn {
+  padding: 12px 20px;
+  background-color: #16a34a;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+}
+
+.upload-btn:hover {
+  background-color: #15803d;
+}
+
+/* Camera button */
+.camera-btn {
+  padding: 12px 20px;
+  background-color: #16a34a;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+}
+
+.camera-btn:hover {
+  background-color: #15803d;
+}
+
+/* Predict button */
+.predict-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #15803d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+}
+
+.predict-btn:hover {
+  background-color: #166534;
+}
